@@ -1,13 +1,13 @@
 package p12.delegate;
 
-class Coche {
+public class Coche {
 	Motor m;
 	
-	Coche(Motor m){
+	public Coche(Motor m){
 		this.m = m;
 	}
 	
-	void avanza() {
+	public void avanza() {
 		this.m.avanza();
 	}
 }

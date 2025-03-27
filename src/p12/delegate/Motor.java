@@ -1,5 +1,5 @@
 package p12.delegate;
 
-interface Motor {
+public interface Motor {
 	void avanza();
 }

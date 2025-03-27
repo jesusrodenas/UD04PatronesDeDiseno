@@ -4,27 +4,27 @@ package p01.constructor;
 class Coche {
 	private String marca;
 	private String modelo;
-	private int año;
+	private int anno;
 	private String color;
 
 	// Constructor privado, solo accesible desde el Builder
 	private Coche(CocheBuilder builder) {
 		this.marca = builder.marca;
 		this.modelo = builder.modelo;
-		this.año = builder.año;
+		this.anno = builder.anno;
 		this.color = builder.color;
 	}
 
 	// Método para mostrar la información del coche
 	public void mostrarInfo() {
-		System.out.println("Coche: " + marca + " " + modelo + " (" + año + ") - Color: " + color);
+		System.out.println("Coche: " + marca + " " + modelo + " (" + anno + ") - Color: " + color);
 	}
 
 	// Clase estática interna: Builder
 	public static class CocheBuilder {
 		private String marca;
 		private String modelo;
-		private int año;
+		private int anno;
 		private String color;
 
 		// Métodos para establecer cada atributo y devolver el Builder
@@ -38,8 +38,8 @@ class Coche {
 			return this;
 		}
 
-		public CocheBuilder setAño(int año) {
-			this.año = año;
+		public CocheBuilder setAnno(int anno) {
+			this.anno = anno;
 			return this;
 		}
 

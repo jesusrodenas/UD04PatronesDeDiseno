@@ -11,10 +11,16 @@ public class MainConstructor {
 		Coche coche1 = new Coche.CocheBuilder()
 				.setMarca("Toyota")
 				.setModelo("Corolla")
-				.setAño(2023)
+				.setAnno(2023)
 				.setColor("Rojo")
 				.build();
-
+		
+		Coche.CocheBuilder consSeat = new Coche.CocheBuilder();
+		consSeat.setMarca("Seat");
+		consSeat.setModelo("León");
+		
+		Coche cocheSeat = consSeat.build();
+		
 		// Mostramos la información del coche
 		coche1.mostrarInfo();
 	}
