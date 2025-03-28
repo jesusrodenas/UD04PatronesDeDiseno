@@ -12,9 +12,11 @@ public class MainFactoria {
 		// Creamos diferentes vehículos usando la fábrica
 		Vehiculo vehiculo1 = VehiculoFactory.crearVehiculo("coche", "Toyota");
 		Vehiculo vehiculo2 = VehiculoFactory.crearVehiculo("moto", "Honda");
+		Vehiculo vehiculo3 = VehiculoFactory.crearVehiculo("patinete", "Seat");
 
 		// Mostramos la información de los vehículos
 		vehiculo1.mostrarInfo();
 		vehiculo2.mostrarInfo();
+		vehiculo3.mostrarInfo();
 	}
 }

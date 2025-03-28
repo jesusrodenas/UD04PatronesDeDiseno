@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,22 +23,28 @@ public class MainConstructorAlumno {
 		do {
 			System.out.println("1. Dar de alta un alumno");
 			System.out.println("2. Listar alumnos");
-			System.out.println("3. Salir y guardar");
-			System.out.println("4. Salir y borrar datos");
+			System.out.println("3. Ordenar agenda");
+			System.out.println("4. Salir y guardar");
+			System.out.println("5. Salir y borrar datos");
+			
 			opcion = Integer.parseInt(sc.nextLine());
 			tratarOpcion(opcion, lAlumnos);
-		}while(opcion!=3 && opcion!=4);
+		}while(opcion!=5 && opcion!=4);
 		salir(lAlumnos, opcion);
 		
 	}
 	
-	public static void tratarOpcion(int opc, List<Alumno> lAlumnos) {
-		if(opc==1) {
+	public static void tratarOpcion(int opc, List<Alumno> lAlumnos) {		
+		switch(opc) {
+		case  (1):
 			crearNuevoAlumno(lAlumnos);
-		}else {
-			if(opc==2) {
-				listarAlumnos(lAlumnos);
-			}
+			break;
+		case(2):
+			listarAlumnos(lAlumnos);
+			break;
+		case(3):
+			ordenarLista(lAlumnos);
+			break;
 		}
 	}
 	
@@ -50,9 +57,11 @@ public class MainConstructorAlumno {
 		String ape1 = sc.nextLine();
 		System.out.println("Segundo apellido (intro si no tiene): ");
 		String ape2 = sc.nextLine();
+		System.out.println("Edad: ");
+		int edad = Integer.parseInt(sc.nextLine());
 		
 		Alumno.AlumnoBuilder alumnobuilder = 
-				new Alumno.AlumnoBuilder(nombre, ape1, ("").equals(ape2)?null:ape2);
+				new Alumno.AlumnoBuilder(nombre, ape1, ("").equals(ape2)?null:ape2, edad);
 		Alumno alumno = alumnobuilder.build();
 		
 		lAlumnos.add(alumno);
@@ -63,7 +72,7 @@ public class MainConstructorAlumno {
 	}
 	
 	public static void salir(List<Alumno> lAlumnos, int opcion) {
-		if(opcion==3) {
+		if(opcion==4) {
 			try (FileOutputStream fos = new FileOutputStream("agenda.obj");
 					ObjectOutputStream oos = new ObjectOutputStream(fos)){
 				oos.writeObject(lAlumnos);
@@ -72,7 +81,7 @@ public class MainConstructorAlumno {
 			}
 			System.out.println("Información salvada. ¡Hasta la vista!");
 		}else {
-			if(opcion==4) {
+			if(opcion==5) {
 				File fAgenda = new File("agenda.obj");
 				if(fAgenda.exists()) {
 					fAgenda.delete();
@@ -100,5 +109,9 @@ public class MainConstructorAlumno {
 		}
 		
 		return lAlumnos; 
+	}
+	
+	public static void ordenarLista(List<Alumno> lalumnos) {
+		Collections.sort(lalumnos);
 	}
 }
